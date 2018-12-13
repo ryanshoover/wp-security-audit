@@ -6,6 +6,10 @@
 	<exclude-pattern>*.min.js</exclude-pattern>
 	<exclude-pattern>node_modules/**/*.php</exclude-pattern>
 
+	<!-- Include Compatibility Checker -->
+	<rule ref="PHPCompatibility">
+	</rule>
+
 	<!-- Include the WordPress-Core standard. -->
 	<rule ref="WordPress-Core">
 		<exclude name="WordPress.WhiteSpace" />
