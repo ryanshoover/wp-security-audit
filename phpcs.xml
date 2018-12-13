@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<ruleset name="WPEngine">
+	<description>WP Engine's custom set of PHPCS rules</description>
+
+	<!-- Exclude minified Javascript files. -->
+	<exclude-pattern>*.min.js</exclude-pattern>
+	<exclude-pattern>node_modules/**/*.php</exclude-pattern>
+
+	<!-- Include the WordPress-Core standard. -->
+	<rule ref="WordPress-Core">
+		<exclude name="WordPress.WhiteSpace" />
+		<exclude name="Generic.WhiteSpace" />
+		<exclude name="Squiz.WhiteSpace" />
+		<exclude name="WordPress.Arrays" />
+		<exclude name="Generic.Files" />
+		<exclude name="WordPress.Files" />
+		<exclude name="PEAR.Files.IncludingFile.BracketsNotRequired" />
+		<exclude name="WordPress.PHP.YodaConditions" />
+		<exclude name="Squiz.PHP.CommentedOutCode" />
+		<exclude name="WordPress.PHP.DevelopmentFunctions" />
+		<exclude name="PSR2.ControlStructures.SwitchDeclaration" />
+		<exclude name="WordPress.PHP.StrictComparisons" />
+		<exclude name="Squiz.Strings" />
+		<exclude name="WordPress.WP.AlternativeFunctions" />
+		<exclude name="WordPress.PHP.StrictInArray" />
+	</rule>
+
+	<!-- Include the WordPress-Extra standard. -->
+	<rule ref="WordPress-Extra">
+		<!--
+		We may want a middle ground though. The best way to do this is add the
+		entire ruleset, then rule by rule, remove ones that don't suit a project.
+		We can do this by running `phpcs` with the '-s' flag, which allows us to
+		see the names of the sniffs reporting errors.
+		Once we know the sniff names, we can opt to exclude sniffs which don't
+		suit our project like so.
+		-->
+		<exclude name="WordPress.WhiteSpace.ControlStructureSpacing"/>
+		<exclude name="WordPress.WP.I18n.NonSingularStringLiteralDomain"/>
+	</rule>
+
+	<!-- Set our core WP version to 5.0 -->
+	<rule ref="WordPress.WP.DeprecatedClasses">
+		<properties>
+			<property name="minimum_supported_version" value="5.0"/>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.WP.DeprecatedFunctions">
+		<properties>
+			<property name="minimum_supported_version" value="5.0"/>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.WP.DeprecatedParameters">
+		<properties>
+			<property name="minimum_supported_version" value="5.0"/>
+		</properties>
+	</rule>
+
+</ruleset>
